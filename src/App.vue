@@ -2,6 +2,7 @@
 // 导入lib
 import { ref, reactive } from "vue";
 import { user, user1 } from '@/utils/user.js'
+import { count as timeCount, clickBtn } from '@/utils/time.js'
 
 
 export default {
@@ -36,8 +37,7 @@ export default {
     const reactiveObj = reactive(aimObj);
 
     setTimeout(() => {
-      // reactiveObj.skill = [6];
-      reactiveObj = reactiveChangedObj;
+      reactiveObj.skill = [6];
     }, 2000);
 
     return {
@@ -45,7 +45,9 @@ export default {
       refObj,
       reactiveObj,
       user,
-      user1
+      user1,
+      timeCount,
+      clickBtn
     }
   },
 };
@@ -57,6 +59,10 @@ export default {
   <div>{{ reactiveObj.obj.name }}</div>
   <div>{{ user.name }}</div>
   <div>{{ user1.name }}</div>
+  <div>{{ timeCount }}</div>
+  <button v-on:click="clickBtn">暂停/开始</button>
+
+
 </template>
 
 <style></style>
