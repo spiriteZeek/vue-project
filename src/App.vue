@@ -61,8 +61,6 @@ export default {
   <div>{{ user1.name }}</div>
   <div>{{ timeCount }}</div>
   <button v-on:click="clickBtn">暂停/开始</button>
-
-
 </template>
 
 <style></style>
