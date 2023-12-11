@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="parent" style="height: 100px; width: 100px; border: 3px solid red">
+      <button id="child">按钮</button>
+      <div
+        id="childDiv"
+        style="height: 60px; width: 60px; background-color: blue"
+      ></div>
+      <a id="link" href="https://learnVue01.zeekjet.cn">我自己的网站</a>
+    </div>
+
+    <script>
+      const parent = document.getElementById("parent");
+      const child = document.getElementById("child");
+      const childDiv = document.getElementById("childDiv");
+      const link = document.getElementById('link');
+
+      parent.addEventListener("click", () => {
+        console.log("parent");
+      }); // 第三个参数传true，可以在事件捕获阶段就执行事件。
+
+      child.addEventListener("click", (e) => {
+        console.log("child");
+        e.stopPropagation(); //阻止事件冒泡
+      });
+
+      childDiv.addEventListener("click", () => {
+        console.log("childDiv");
+      });
+      link.addEventListener("click", (e) => {
+        console.log("我不跳转，就是皮");
+        e.preventDefault();
+      })
+    </script>
+  </body>
+</html>
