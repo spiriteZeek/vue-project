@@ -1,7 +1,7 @@
 // import './assets/main.css'
 
 import { createApp } from 'vue'
-import Main from './Main.vue'
+import Main from './Main2.vue'
 import ChildComp from '@/component/Child.vue'
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';

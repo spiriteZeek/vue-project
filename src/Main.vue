@@ -3,6 +3,7 @@ import PartComp from "@/component/Part.vue";
 import AttrsComp from "@/component/Attrs.vue";
 import AButtonComp from "@/component/AButton.vue";
 import TableComp from "@/component/Table.vue";
+import ModelComp from "@/component/Model.vue";
 import { ref } from "vue";
 export default {
   name: "MainComp",
@@ -11,15 +12,21 @@ export default {
     AttrsComp,
     AButtonComp,
     TableComp,
+    ModelComp,
   },
   setup() {
     const msgText = ref("父级组件的基础数据");
     const msgObj = ref({ name: "父级组件的对象数据" });
     const count = ref(0);
+    const modelText = ref('');
 
     function add(num1, num2, name) {
       count.value = num1 + num2;
       msgObj.value.name = name;
+    }
+
+    function getData(data) {
+      console.log(data);
     }
 
     setTimeout(() => {
@@ -31,6 +38,8 @@ export default {
       msgObj,
       count,
       add,
+      getData,
+      modelText,
     };
   },
 };
@@ -62,7 +71,8 @@ export default {
   </a-button-comp>
 
   <attrs-comp></attrs-comp>
-  <table-comp v-model="customInput"></table-comp>
+  <table-comp @submit="getData"></table-comp>
+  <model-comp v-model="modelText"></model-comp>
 </template>
 
 <style scoped>
