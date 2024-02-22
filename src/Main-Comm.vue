@@ -23,11 +23,14 @@ export default {
   {{ ancestryModel }}
   <ancestry-comp v-model="ancestryModel">
   </ancestry-comp>
-  <div>
+  <div class="pingpong">
     <ping-comp></ping-comp>
     <pong-comp></pong-comp>
   </div>
 </template>
 
 <style scoped>
+.pingpong {
+  margin-top: 200px;
+}
 </style>
