@@ -1,5 +1,5 @@
 <script>
-import { ref } from "vue";
+import { ref, provide } from "vue";
 import FatherComp from "@/comm/Father.vue";
 export default {
   name: "AncestryComp",
@@ -7,6 +7,10 @@ export default {
     FatherComp,
   },
   setup() {
+    const provideObj = {
+      name: '依赖注入的对象名'
+    }
+    provide('provideObj', provideObj)
     const ancestryInput = ref("祖先");
 
     const fatherModel = ref("父亲");
@@ -17,6 +21,10 @@ export default {
       ancestryInput.value = data;
     }
 
+    setTimeout(() => {
+      console.log('修改依赖注入的对象名')
+      provideObj.name = "已修改依赖注入";
+    }, 3000);
 
 
     return {

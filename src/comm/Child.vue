@@ -1,5 +1,5 @@
 <script>
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, inject } from "vue";
 export default {
   name: "ChildComp",
   props: ["fatherValue"],
@@ -17,8 +17,10 @@ export default {
       console.log("props.fatherValue changed")
       childLocal.value = props.fatherValue;
     })
+    const injectObj = inject('provideObj');
     return {
       childLocal,
+      injectObj,
     };
   },
 };
@@ -28,6 +30,7 @@ export default {
     <div>div:孩子</div>
     {{ childLocal }}
     <el-input v-model="childLocal"></el-input>
+    {{ injectObj.name }}
   </div>
 </template>
 <style scoped>
