@@ -1,19 +1,19 @@
 <script>
 import { ref, watch } from "vue";
 import { pingSend, pongSend } from "@/utils/pingpong.js";
-import eventBus from "@/utils/eventbus.js"
+import { eventBus, eventType } from "@/utils/eventbus.js";
 export default {
   name: "PingComp",
   setup() {
     const count = ref(1);
 
-    eventBus.on("pong", (val) => {
-      console.log("ping watch pong event")
-      count.value += val
-    })
-    
+    eventBus.on(eventType.pong, (val) => {
+      console.log("ping watch pong event");
+      count.value += val;
+    });
+
     function sendByBus() {
-      eventBus.emit('ping', count.value)
+      eventBus.emit(eventType.ping, count.value);
     }
 
     function send() {
@@ -26,7 +26,7 @@ export default {
     return {
       count,
       send,
-      sendByBus
+      sendByBus,
     };
   },
 };
